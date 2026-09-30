@@ -101,9 +101,12 @@ public class NaverCafe
 
     private async Task<T> request<T>(HttpRequestMessage req)
     {
-        var res = await _httpClient.SendAsync(req);
-        var stream = await res.Content.ReadAsStreamAsync();
-        return await parseResponseStream<T>(stream);
+        using (req)
+        using (var res = await _httpClient.SendAsync(req))
+        using (var stream = await res.Content.ReadAsStreamAsync())
+        {
+            return await parseResponseStream<T>(stream);
+        }
     }
 
     private async Task<T> parseResponseStream<T>(Stream stream)
