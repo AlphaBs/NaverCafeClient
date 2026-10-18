@@ -56,9 +56,3 @@ foreach (var n in noticeListFromBoard.ArticleList)
 
 ```
 
-
-
-## Native AOT
-
-- 기존 `netstandard2.1` 자산을 유지하고 AOT 분석을 활성화한 `net8.0` 자산을 제공합니다.
-- 내장 응답·오류 모델은 System.Text.Json 소스 생성 메타데이터를 사용합니다.
